@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 # Create your models here.
@@ -22,10 +23,13 @@ class WatchList(models.Model):
         return self.title
 
 
-# class Movie(models.Model):
-#     name = models.CharField(max_length=50)
-#     description = models.CharField(max_length=200)
-#     active = models.BooleanField(default=True)
+class Review(models.Model):
+    watchlist = models.ForeignKey(WatchList, on_delete=models.CASCADE, related_name="review")
+    rating = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    description = models.CharField(max_length=200, null=True, blank=True)
+    active = models.BooleanField(default=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
-#     def __str__(self):
-#         return self.name
+    def __str__(self):
+        return str(self.rating)
