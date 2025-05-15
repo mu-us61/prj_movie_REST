@@ -32,4 +32,4 @@ class Review(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return str(self.rating)
+        return f"{self.watchlist.title}'s review movieID={self.watchlist.id}"
