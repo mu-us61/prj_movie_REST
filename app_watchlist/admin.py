@@ -10,7 +10,7 @@ from app_watchlist.models import StreamPlatform, WatchList, Review
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ("id", "rating", "watchlist", "updated", "active")
+    list_display = ("id", "review_user", "rating", "watchlist", "updated", "active")
     readonly_fields = ("id", "updated", "created")
 
     # Optional: Display the watchlist title instead of the default __str__

@@ -7,6 +7,7 @@ class ReviewSerializer(serializers.ModelSerializer):
         model = Review
         # fields = "__all__"
         exclude = ["watchlist"]
+        read_only_fields = ["id", "review_user", "created", "updated", "active"]
 
 
 class WatchListSerializer(serializers.ModelSerializer):
@@ -14,7 +15,7 @@ class WatchListSerializer(serializers.ModelSerializer):
         model = WatchList
         fields = "__all__"
 
-    review = ReviewSerializer(many=True, read_only=True)
+    # review = ReviewSerializer(many=True, read_only=True)
 
 
 class StreamPlatformSerializer(serializers.ModelSerializer):
@@ -22,4 +23,4 @@ class StreamPlatformSerializer(serializers.ModelSerializer):
         model = StreamPlatform
         fields = "__all__"
 
-    watchlist = WatchListSerializer(many=True, read_only=True)
+    # watchlist = WatchListSerializer(many=True, read_only=True)
